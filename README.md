@@ -11,7 +11,7 @@ Calculate Taipower (Taiwan Power Company) bi-monthly bill amount from kWh sensor
 ```yaml
 utility_meter:
   bimonthly_energy:
-    source: sensor.total_power
+    source: sensor.total_power # 這是您想用來計算電費的 kWh 來源傳感器.
     cycle: bimonthly
     offset:
       days: 18
