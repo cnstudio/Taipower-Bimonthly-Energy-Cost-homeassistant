@@ -28,7 +28,7 @@ sensor:
     sensors:
       power_cost:
         value_template: >
-          {% if now().month in [6,7,8,9,10] %}
+          {% if now().month in [6,7,8,9] %}
             {% if states("sensor.bimonthly_energy") | float < 240 %}
               {{(states("sensor.bimonthly_energy") | float * 1.63) | round(0)}}
             {% elif states("sensor.bimonthly_energy") | float >= 240  and states("sensor.bimonthly_energy") | float < 660 %}
