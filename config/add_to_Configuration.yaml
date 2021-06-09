@@ -1,0 +1,45 @@
+utility_meter:
+  bimonthly_energy:
+    source: sensor.total_power
+    cycle: bimonthly
+    offset:
+      days: 18
+      hours: 0
+      minutes: 0
+      
+sensor:
+  - platform: template
+    sensors:
+      power_cost:
+        value_template: >
+          {% if now().month in [6,7,8,9] %}
+            {% if states("sensor.bimonthly_energy") | float < 240 %}
+              {{(states("sensor.bimonthly_energy") | float * 1.63) | round(0)}}
+            {% elif states("sensor.bimonthly_energy") | float >= 240  and states("sensor.bimonthly_energy") | float < 660 %}
+              {{(((states("sensor.bimonthly_energy") | float - 240) * 2.38) + 391.2) | round(0)}}
+            {% elif states("sensor.bimonthly_energy") | float >= 660  and states("sensor.bimonthly_energy") | float < 1000 %}
+              {{(((states("sensor.bimonthly_energy") | float - 660) * 3.52) + 1390.8) | round(0)}}
+            {% elif states("sensor.bimonthly_energy") | float >= 1000  and states("sensor.bimonthly_energy") | float < 1400 %}
+              {{(((states("sensor.bimonthly_energy") | float - 1000) * 4.8) + 2587.6) | round(0)}}
+            {% elif states("sensor.bimonthly_energy") | float >= 1400  and states("sensor.bimonthly_energy") | float < 2000 %}
+              {{(((states("sensor.bimonthly_energy") | float - 1400) * 5.66) + 4507.6) | round(0)}}
+            {% elif states("sensor.bimonthly_energy") | float >= 2000 %}
+              {{(((states("sensor.bimonthly_energy") | float - 2000) * 6.41) + 7903.6) | round(0)}}
+            {% endif %}
+          {% else %}
+            {% if states("sensor.bimonthly_energy") | float < 240 %}
+              {{(states("sensor.bimonthly_energy") | float * 1.63) | round(0)}}
+            {% elif states("sensor.bimonthly_energy") | float >= 240  and states("sensor.bimonthly_energy") | float < 660 %}
+              {{(((states("sensor.bimonthly_energy") | float - 240) * 2.1) + 391.2) | round(0)}}
+            {% elif states("sensor.bimonthly_energy") | float >= 660  and states("sensor.bimonthly_energy") | float < 1000 %}
+              {{(((states("sensor.bimonthly_energy") | float - 660) * 2.89) + 1273.2) | round(0)}}
+            {% elif states("sensor.bimonthly_energy") | float >= 1000  and states("sensor.bimonthly_energy") | float < 1400 %}
+              {{(((states("sensor.bimonthly_energy") | float - 1000) * 3.94) + 2255.8) | round(0)}}
+            {% elif states("sensor.bimonthly_energy") | float >= 1400  and states("sensor.bimonthly_energy") | float < 2000 %}
+              {{(((states("sensor.bimonthly_energy") | float - 1400) * 4.6) + 3831.8) | round(0)}}
+            {% elif states("sensor.bimonthly_energy") | float >= 2000 %}
+              {{(((states("sensor.bimonthly_energy") | float - 2000) * 5.03) + 6591.8) | round(0)}}
+            {% endif %}
+          {% endif %}
+        friendly_name: "目前總電費"
+        unit_of_measurement: "NTD"
