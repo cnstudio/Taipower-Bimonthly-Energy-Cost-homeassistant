@@ -64,3 +64,14 @@ sensor:
 ## 2) 重啟 (Reboot) Home Assistant,
 之後即可使用 `sensor.power_cost` 顯示目前的電費總金額.
 
+## Appendix I: How to convert from W to kWh - 如何將 W 轉換為 kWh ?  
+一般來說大部分的電量偵測硬體是回傳 W (瓦特), 如果想要將 W 轉換為電度 kWh 給 `utility meter` 使用的話,  
+可於 `configuration.yaml` 內的 `sensor:` 段落內加入如下的程式碼即可完成轉換工作:
+
+```yaml
+  - platform: integration
+    source: sensor.your_W_sensor # 這是您原始的用電 "W (瓦特)" 偵測器.
+    name: total_power # 這是要交給 utility meter 的名稱.
+    unit_prefix: k
+    round: 3
+```
