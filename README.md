@@ -58,7 +58,8 @@ sensor:
             {% endif %}
           {% endif %}
         friendly_name: "目前總電費"
-        unit_of_measurement: "NTD"
+        unit_of_measurement: "TWD"
+        device_class: monetary
 ```
         
 ## 2) 重啟 (Reboot) Home Assistant,
