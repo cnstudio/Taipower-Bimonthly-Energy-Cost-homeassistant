@@ -42,8 +42,9 @@ sensor:
             {% endif %}
           {% endif %}
         friendly_name: "目前總電費"
-        unit_of_measurement: "NTD"
-        
+        unit_of_measurement: "TWD"
+        device_class: monetary
+
   - platform: integration
     source: sensor.your_W_sensor # 這是您的用電 "W (瓦特)" 偵測器
     name: total_power
