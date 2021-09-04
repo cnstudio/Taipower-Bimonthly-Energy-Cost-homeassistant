@@ -58,7 +58,7 @@ sensor:
             {% endif %}
           {% endif %}
         friendly_name: "目前電度單價"
-        unit_of_measurement: "TWD"
+        unit_of_measurement: "TWD/kWh"
         device_class: monetary
 
   - platform: template
