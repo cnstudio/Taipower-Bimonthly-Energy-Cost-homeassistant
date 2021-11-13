@@ -1,1 +1,3 @@
 *.yaml linguist-language=YAML
+config/* linguist-documentation=false
+config/* linguist-vendored
