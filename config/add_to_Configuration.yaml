@@ -1,3 +1,11 @@
+counter:
+  energy_reset_days:
+    initial: 0
+    restore: true
+    step: 1
+    minimum: 0
+    maximum: 65535
+
 utility_meter:
   bimonthly_energy:
     source: sensor.total_power
