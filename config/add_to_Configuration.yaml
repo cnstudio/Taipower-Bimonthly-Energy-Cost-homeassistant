@@ -1,12 +1,7 @@
 utility_meter:
   bimonthly_energy:
     source: sensor.total_power
-    cycle: bimonthly
-    offset:
-      days: 18
-      hours: 0
-      minutes: 0
-      
+
 sensor:
   - platform: template
     sensors:
