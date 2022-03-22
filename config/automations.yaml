@@ -1,0 +1,28 @@
+- id: 'adddailycounter'
+  alias: "增加每日計數器"
+  description: '增加每日計數器'
+  trigger:
+  - platform: time
+    at: "23:59:59"
+  action:
+  - service: counter.increment
+    target:
+      entity_id: counter.energy_reset_days
+- id: 'resetbimonthlyenergysensor'
+  alias: "重置電費週期瓦時計"
+  description: '重置電費週期瓦時計'
+  trigger:
+  - platform: numeric_state
+    entity_id: counter.energy_reset_days
+    above: 59 #配合台電電費60天週期
+  action:
+  - service: utility_meter.calibrate
+    data:
+      value: '0.000'
+    target:
+      entity_id: 
+      - sensor.bimonthly_energy
+  - service: counter.reset
+    data:
+      entity_id:
+      - counter.energy_reset_days
