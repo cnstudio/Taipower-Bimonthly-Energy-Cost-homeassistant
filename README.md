@@ -1,26 +1,34 @@
 # Taipower-Bimonthly-Energy-Cost-homeassistant
 Calculate Taipower (Taiwan Power Company) bi-monthly bill amount from kWh sensor on Home Assistant.  
 在 Home Assistant (HA) 內以 kWh sensor (千瓦⋅時 電度 傳感器) 計算每期 (雙月) 電費帳單金額.  
-請注意 **`目前只支援 "非時間電價-非營業用的表燈用電" 計費`** 模式.
+請注意 **`目前只支援 "非時間電價-非營業用的表燈用電" 計費`** 模式. 
 
 ## 1) Install - 安裝
 
-###### 1.1) 以從 1月 18 日抄錶開始的雙月帳單週期為例, 
-先在 `configuration.yaml` 內加入每兩個月 18 日自動歸零的總用電 `utility meter`, 程式碼如下
+###### 1.1) 增加計數器給自動化電費週期 (台電每60天為一個計費周期) 計算用, 
+先在 `configuration.yaml` 內加入計數器 `counter`, 程式碼如下 
+
+```yaml
+counter:
+  energy_reset_days:
+    initial: 0
+    restore: true
+    step: 1
+    minimum: 0
+    maximum: 65535
+```
+
+###### 1.2) 增加電度瓦時計量表, 
+一樣在 `configuration.yaml` 內加入總用電 `utility meter`, 程式碼如下 
 
 ```yaml
 utility_meter:
   bimonthly_energy:
     source: sensor.total_power # 這是您想用來計算電費的 kWh 來源傳感器.
-    cycle: bimonthly
-    offset:
-      days: 18
-      hours: 0
-      minutes: 0
 ```
       
-###### 1.2) 依照 2021 年 5 月 1 日由台灣電力公司發佈的最新電價表, 
-於 `configuration.yaml` 內加入電費計算傳感器 (template sensor), 程式碼如下
+###### 1.3) 依照 2021 年 5 月 1 日由台灣電力公司發佈的最新電價表, 
+繼續於 `configuration.yaml` 內加入電費計算傳感器 `template sensor`, 程式碼如下 
 
 ```yaml
 sensor:
@@ -98,9 +106,50 @@ sensor:
         unit_of_measurement: "TWD"
         device_class: monetary
 ```
-        
-## 2) 重啟 (Reboot) Home Assistant,
-之後即可使用 `sensor.power_cost` 顯示目前的電費總金額.
+
+###### 1.4) 新增每 60 天自動重置功能,  
+接下來再另一個檔案 `configuration.yaml` 內加入配合台電 60 天計費周期的自動化功能, 程式碼如下 
+
+```yaml
+- id: 'adddailycounter'
+  alias: "增加每日計數器"
+  description: '增加每日計數器'
+  trigger:
+  - platform: time
+    at: "23:59:59"
+  action:
+  - service: counter.increment
+    target:
+      entity_id: counter.energy_reset_days
+- id: 'resetbimonthlyenergysensor'
+  alias: "重置電費週期瓦時計"
+  description: '重置電費週期瓦時計'
+  trigger:
+  - platform: numeric_state
+    entity_id: counter.energy_reset_days
+    above: 59 #配合台電電費60天週期
+  action:
+  - service: utility_meter.calibrate
+    data:
+      value: '0.000'
+    target:
+      entity_id: 
+      - sensor.bimonthly_energy
+  - service: counter.reset
+    data:
+      entity_id:
+      - counter.energy_reset_days
+```
+
+## 2) 重啟 (Reboot) Home Assistant,  
+之後即可使用 `sensor.power_cost` 顯示目前的電費總金額, 並可使用 `bimonthly_energy` 顯示總用電度數.  
+
+###### 2.1) 調整重置日期對準台電計費周期的方法:  
+假設今天日期為 1/1, 而電費單的下期計費周期開始於 2/8, 也就是 39 天後.  
+請進入 Home Assistant 內的 設定 -> 裝置與服務 -> 實體 -> (於名稱欄位尋找) energy reset days 並點擊它,  
+之後於跳出的小選單的右上角 "控制" 符號上點擊進入下一層選單. 此時小選單的下方應該會出現 "增量" "減量" "重置" 三個文字,  
+請點擊 "增量" 文字 39 次, 此時小選單中間右邊應該會顯示數字 39, 這樣便對齊台電電費計費周期.  
+此動作只要第一次做一次即可! 之後每 60 天會自動跟著台電計費周期自動重置相關表計!  
 
 ## Appendix I: How to convert from W to kWh - 如何將 W 轉換為 kWh ?  
 一般來說大部分的電量偵測硬體是回傳 W (瓦特), 如果想要將 W 轉換為電度 kWh 給 `utility meter` 使用的話,  
