@@ -108,7 +108,7 @@ sensor:
 ```
 
 ###### 1.4) 新增每 60 天自動重置功能,  
-接下來再另一個檔案 `configuration.yaml` 內加入配合台電 60 天計費周期的自動化功能, 程式碼如下 
+接下來在另一個檔案 `automations.yaml` 內加入配合台電 60 天計費周期的自動化功能, 程式碼如下 
 
 ```yaml
 - id: 'adddailycounter'
