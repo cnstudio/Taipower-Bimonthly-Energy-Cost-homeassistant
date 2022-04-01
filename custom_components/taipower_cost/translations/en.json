@@ -1,0 +1,32 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Service is already configured"
+        },
+        "error": {
+            "entitynotexist": "The Entity is not exist!",
+            "dataformaterror": "Incorrect data format, should be YYYY/MM/DD",
+            "unknown": "Unexpected error"
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "bimonthly_energy": "Bimonthly Energy Entity",
+                    "meter_start_day": "Meter Start Day"
+                },
+                "description": "Please enter reset days and energy entity",
+                "title": "Choose the energy entity and reset days"
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "data": {
+                    "bimonthly_energy": "Bimonthly Energy Entity",
+                    "meter_start_day": "Meter Start Day"
+                }
+            }
+        }
+    }
+}
