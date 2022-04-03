@@ -1,5 +1,5 @@
 {
-  "domain": "taipower_bimonthly_cost",
+  "domain": "taipower_cost",
   "name": "TaiPower Bimonthly Energy Cost",
   "documentation": "https://github.com/cnstudio/Taipower-Bimonthly-Energy-Cost-homeassistant",
   "issue_tracker": "https://github.com/cnstudio/Taipower-Bimonthly-Energy-Cost-homeassistant/issues",
@@ -8,5 +8,5 @@
   "config_flow": true,
   "iot_class": "cloud_polling",
   "quality_scale": "gold",
-  "version": "0.50.1"
+  "version": "0.50.2"
 }
