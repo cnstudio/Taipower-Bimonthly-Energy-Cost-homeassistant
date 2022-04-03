@@ -10,19 +10,5 @@
   "config_flow": true,
   "iot_class": "cloud_polling",
   "quality_scale": "gold",
-  "homeassistant": "2021.9.0",
-  "version": "0.50.1",
-  "updater": {
-    "version": "0.50.1",
-    "releaseNotes": "-- Compliance with the breaking change to custom components and HACS",
-    "files": [
-      "__init__.py",
-      "config_flow.py",
-      "const.py",
-      "manifest.json",
-      "sensor.py",
-      "translations/en.json",
-      "translations/zh-Hant.json"
-    ]
-  }
+  "version": "0.50.1"
 }
