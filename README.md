@@ -1,4 +1,4 @@
-[![](https://img.shields.io/badge/HACS-Custom-orange.svg?style=flat-square)](https://github.com/custom-components/hacs)
+[![](https://img.shields.io/github/v/release/cnstudio/Taipower-Bimonthly-Energy-Cost-homeassistant.svg?style=flat-square)](https://github.com/cnstudio/Taipower-Bimonthly-Energy-Cost-homeassistant/releases/latest) [![](https://img.shields.io/badge/HACS-Custom-orange.svg?style=flat-square)](https://github.com/custom-components/hacs)
 
 # Taipower-Bimonthly-Energy-Cost-homeassistant
 Calculate Taipower (Taiwan Power Company) bi-monthly bill amount from kWh sensor on Home Assistant.  
