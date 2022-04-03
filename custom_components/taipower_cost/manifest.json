@@ -10,6 +10,7 @@
   "config_flow": true,
   "iot_class": "local_polling",
   "quality_scale": "gold",
+  "homeassistant": "2021.9.0",
   "version": "0.50.0",
   "updater": {
     "version": "0.50.0",
