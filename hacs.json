@@ -1,7 +1,7 @@
 {
     "name": "Taipower Bimonthly Energy Cost",
     "render_readme": true,
-    "domain": "taipower_cost",
+    "domain": "taipower_bimonthly_cost",
     "documentation": "https://github.com/cnstudio/Taipower-Bimonthly-Energy-Cost-homeassistant",
     "issue_tracker": "https://github.com/cnstudio/Taipower-Bimonthly-Energy-Cost-homeassistant/issues"
 }
