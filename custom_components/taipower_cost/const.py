@@ -2,7 +2,7 @@
 
 CONFIG_FLOW_VERSION = 1
 
-DOMAIN = "taipower_bimonthly_cost"
+DOMAIN = "taipower_cost"
 PLATFORMS = ["sensor"]
 
 ATTR_BIMONTHLY_ENERGY = "bimonthly energy source"
