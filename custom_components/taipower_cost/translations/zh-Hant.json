@@ -1,0 +1,32 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "\u670d\u52d9\u5df2\u7d93\u8a2d\u5b9a\u5b8c\u6210"
+        },
+        "error": {
+            "entitynotexist": "\u9019\u500b\u5be6\u9ad4 (Entity) \u4e0d\u5b58\u5728!!",
+            "dataformaterror": "\u65e5\u671f\u683c\u5f0f\u4e0d\u6b63\u78ba, \u61c9\u8a72\u662f YYYY/MM/DD",
+            "unknown": "\u672a\u9810\u671f\u932f\u8aa4"
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "bimonthly_energy": "\u96d9\u6708\u8a08\u91cf\u96fb\u6e90\u5be6\u9ad4 (Entity)",
+                    "meter_start_day": "\u96fb\u8868\u6284\u8868\u65e5"
+                },
+                "description": "\u8acb\u8f38\u5165\u96fb\u8868\u6284\u8868\u65e5\u4ee5\u53ca\u8a08\u91cf\u96fb\u6e90\u5be6\u9ad4",
+                "title": "\u9078\u64c7\u96fb\u8868\u6284\u8868\u65e5\u548c\u8a08\u91cf\u96fb\u6e90\u5be6\u9ad4"
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "data": {
+                    "bimonthly_energy": "\u96d9\u6708\u8a08\u91cf\u96fb\u6e90\u5be6\u9ad4 (Entity)",
+                    "meter_start_day": "\u96fb\u8868\u6284\u8868\u65e5"
+                }
+            }
+        }
+    }
+}

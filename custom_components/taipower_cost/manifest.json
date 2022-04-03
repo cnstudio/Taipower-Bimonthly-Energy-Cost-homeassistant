@@ -1,0 +1,10 @@
+{
+  "domain": "taipower_cost",
+  "name": "TaiPower Bimonthly Energy Cost",
+  "documentation": "https://github.com/tsunglung/TaiPowerCost",
+  "issue_tracker": "https://github.com/tsunglung/TaiPowerCost/issues",
+  "version": "1.0.0",
+  "codeowners": ["@tsunglung"],
+  "config_flow": true,
+  "iot_class": "cloud_polling"
+}
