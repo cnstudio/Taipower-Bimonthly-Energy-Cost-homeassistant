@@ -39,7 +39,7 @@ UI 第二行請輸入本期電費計算周期的第一天的日期 (格式為 YY
 接下來請重新啟動 (reboot) HA.  
   
 ###### 2.3) 於 Home Assistant 內新增整合元件, 
-請至 HA 內的 設定 -> 裝置與服務 -> 新增整合(位於右下角的按鈕) -> 於跳出的 設定整合 選單內搜索 `Taipower bimonthly cost` 並安裝.
+請至 HA 內的 設定 -> 裝置與服務 -> 整合 新增整合(位於右下角的按鈕) -> 於跳出的 設定整合 選單內搜索 `Taipower bimonthly cost` 並安裝.
 之後依照 UI 提示進行即可:  
   
 UI 第一行請輸入要引用為電費計算的 "即時 kWh" 的 `utility meter` sensor (請看本說明下方附錄章節了解如何增設 utility meter).  
