@@ -52,8 +52,8 @@ class TaiPowerCostFlow(config_entries.ConfigFlow, domain=DOMAIN):
         if user_input is not None:
             taipower_energy_cost = "taipower_energy_cost"
             await self.async_set_unique_id(
-                f"{taipower_energy_cost}"
-            )
+                    f"{taipower_energy_cost}-{user_input[CONF_BIMONTHLY_ENERGY]}"
+                )
             self._abort_if_unique_id_configured()
 
             ret = False

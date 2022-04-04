@@ -76,12 +76,12 @@ class KwhCostSensor(SensorEntity):
     @property
     def name(self):
         """Return the name of the sensor."""
-        return "kwh_cost"
+        return "{}-kwh_cost".format(self._energy_entity)
 
     @property
     def unique_id(self):
         """Return the unique of the sensor."""
-        return "kwh_cost"
+        return "{}-kwh_cost".format(self._energy_entity)
 
     @property
     def state(self):
@@ -166,12 +166,12 @@ class EnergyCostSensor(KwhCostSensor):
     @property
     def name(self):
         """Return the name of the sensor."""
-        return "power_cost"
+        return "{}-power_cost".format(self._energy_entity)
 
     @property
     def unique_id(self):
         """Return the unique of the sensor."""
-        return "power_cost"
+        return "{}-power_cost".format(self._energy_entity)
 
     @property
     def state(self):
