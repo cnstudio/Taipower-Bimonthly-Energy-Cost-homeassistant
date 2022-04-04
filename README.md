@@ -48,8 +48,17 @@ UI 第二行請輸入本期電費計算周期的第一天的日期 (格式為 YY
 之後即可使用 `sensor.power_cost` 顯示本期電費統計, 
 並可使用 `sensor.kwh_cost` 給 HA 內建的能源面板作為獨立電費單價來源作為個迴路 (設備) 單獨計算電費使用 (請看本說明下方附錄章節).  
   
+  
 ## Appendix I (附錄 I): 如何新增即時 kWh 的 utility meter sensor 作為能源計算引用?
+請在 `configuration.yaml` 內加入總用電 `utility meter`, 程式碼如下:  
 
+```yaml
+utility_meter:
+  bimonthly_energy:
+    source: sensor.total_power # 這是您想用來計算電費的 kWh 來源傳感器.
+```
+  
+如此即可在設定 UI 的第一行輸入 `sensor.bimonthly_energy` 作為電費計算功能的計算來源.  
   
 ## Appendix II (附錄 II): How to convert from W to kWh - 如何將 W 轉換為 kWh?  
 一般來說大部分的電量偵測硬體是回傳 W (瓦特), 如果想要將 W 轉換為電度 kWh 給 `utility meter` 使用的話,  
@@ -68,4 +77,4 @@ UI 第二行請輸入本期電費計算周期的第一天的日期 (格式為 YY
 從 Home Assistant 2021.8.0 版以後新增了內建的 "能源" 面板功能, 可以分別計算每日用電與每日電費, 配合新增上述 1.2 項次的程式後,  
 只要於 HA 內的 設定 -> 能源 -> Grid consumption -> 耗電量 新增項目內選擇 "total_power",  
 並選擇 獨立價格實體 後於下拉選單內選擇 sensor.kwh_cost 後按下 儲存即可.  
-(注意: 能源面板需要 1~3 個小時後才會開始顯現數值, 給 HA 一點計算時間的耐心)  
+(注意: 能源面板需要 1~2 個小時後才會開始顯現數值, 給 HA 一點計算時間的耐心)  
