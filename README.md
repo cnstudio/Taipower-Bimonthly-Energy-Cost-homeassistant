@@ -11,7 +11,7 @@ Calculate Taipower (Taiwan Power Company) bi-monthly bill amount from kWh sensor
 請在 HACS 的 `Integrations` 內搜索 `Taipower bimonthly cost` 並安裝後,  
 依照 UI 提示安裝即可:  
   
-UI 第一行請輸入要引用為電費計算的 "即時 kWh" 的 utility meter sensor (請看本說明下方附錄章節了解如何增設 utility meter).  
+UI 第一行請輸入要引用為電費計算的 "即時 kWh" 的 `utility meter` sensor (請看本說明下方附錄章節了解如何增設 utility meter).  
 UI 第二行請輸入本期電費計算周期的第一天的日期 (格式為 YYYY/MM/DD).  
   
 之後即可使用 `sensor.power_cost` 顯示本期電費統計, 
@@ -42,14 +42,14 @@ UI 第二行請輸入本期電費計算周期的第一天的日期 (格式為 YY
 請至 HA 內的 設定 -> 裝置與服務 -> 新增整合(位於右下角的按鈕) -> 於跳出的 設定整合 選單內搜索 `Taipower bimonthly cost` 並安裝.
 之後依照 UI 提示進行即可:  
   
-UI 第一行請輸入要引用為電費計算的 "即時 kWh" 的 utility meter sensor (請看本說明下方附錄章節了解如何增設 utility meter).  
+UI 第一行請輸入要引用為電費計算的 "即時 kWh" 的 `utility meter` sensor (請看本說明下方附錄章節了解如何增設 utility meter).  
 UI 第二行請輸入本期電費計算周期的第一天的日期 (格式為 YYYY/MM/DD).  
   
 之後即可使用 `sensor.power_cost` 顯示本期電費統計, 
 並可使用 `sensor.kwh_cost` 給 HA 內建的能源面板作為獨立電費單價來源作為個迴路 (設備) 單獨計算電費使用 (請看本說明下方附錄章節).  
   
   
-## Appendix I (附錄 I): 如何新增即時 kWh 的 utility meter sensor 作為能源計算引用?
+## Appendix I (附錄 I): 如何新增即時 kWh 的 `utility meter` sensor 作為能源計算引用?
 請在 `configuration.yaml` 內加入總用電 `utility meter`, 程式碼如下:  
 
 ```yaml
