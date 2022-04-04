@@ -7,27 +7,20 @@ Calculate Taipower (Taiwan Power Company) bi-monthly bill amount from kWh sensor
 
 ## 1) Install - 安裝
 
-###### 1.1) 增加計數器給自動化電費週期 (台電每60天為一個計費周期) 計算用, 
-先在 `configuration.yaml` 內加入計數器 `counter`, 程式碼如下 
+###### 1.1) 推薦使用 HACS 安裝 (將在近日申請, 目前 HACS 內應該搜索不到):  
+請在 HACS 的 `Integrations` 內搜索 `Taipower bimonthly cost` 並安裝後,  
+依照 UI 提示安裝即可:  
+  
+UI 第一行請輸入要引用為電費計算的 "即時 kWh" sensor (請看本說明下方附錄章節了解如何增設即時 kWh sensor).  
+UI 第二行請輸入本期電費計算周期的第一天的日期 (格式為 YYYY/MM/DD).  
+  
+之後即可使用 `sensor.bimonthly_energy` 顯示本期電費統計, 
+並可使用 `sensor.kwh_cost` 給 HA 內建的能源面板作為獨立電費單價來源作為個迴路 (設備) 單獨計算電費使用 (請看本說明下方附錄章節).  
 
-```yaml
-counter:
-  energy_reset_days:
-    initial: 0
-    restore: true
-    step: 1
-    minimum: 0
-    maximum: 65535
-```
+###### 1.2) 手動安裝 (推薦使用 1.1 的 HACS 安裝日後更新方便很多):  
+下載本專案檔案後解壓縮, 拷貝 `custom_components` 到您 Home Assistant 內的 configuration 目錄下 (通常是 )
 
-###### 1.2) 增加電度瓦時計量表, 
-一樣在 `configuration.yaml` 內加入總用電 `utility meter`, 程式碼如下 
 
-```yaml
-utility_meter:
-  bimonthly_energy:
-    source: sensor.total_power # 這是您想用來計算電費的 kWh 來源傳感器.
-```
       
 ###### 1.3) 依照 2021 年 5 月 1 日由台灣電力公司發佈的最新電價表, 
 繼續於 `configuration.yaml` 內加入電費計算傳感器 `template sensor`, 程式碼如下 
