@@ -1,8 +1,8 @@
 [![](https://img.shields.io/github/v/release/cnstudio/Taipower-Bimonthly-Energy-Cost-homeassistant.svg?style=flat-square)](https://github.com/cnstudio/Taipower-Bimonthly-Energy-Cost-homeassistant/releases/latest)  [![](https://img.shields.io/badge/HACS-Custom-orange.svg?style=flat-square)](https://github.com/custom-components/hacs)
 
 # Taipower-Bimonthly-Energy-Cost-homeassistant
-Calculate Taipower (Taiwan Power Company) bi-monthly bill amount from kWh sensor on Home Assistant.  
-在 Home Assistant (HA) 內以 kWh sensor (千瓦⋅時 電度 傳感器) 計算每期 (雙月) 電費帳單金額.  
+Calculate Taipower (Taiwan Power Company) bi-monthly (60 days) bill amount from kWh sensor on Home Assistant.  
+在 Home Assistant (HA) 內以 kWh sensor (千瓦⋅時 電度 傳感器) 計算每期 (60日曆天) 電費帳單金額.  
 請注意 ** `目前只支援 "非時間電價-非營業用的表燈用電" 計費` ** 模式.  
 ** `可支援多次設定, 增加多個台電電表來源分別計算` **  
   
@@ -16,9 +16,9 @@ Calculate Taipower (Taiwan Power Company) bi-monthly bill amount from kWh sensor
 UI 第一行請輸入要引用為電費計算的 "即時 kWh" 的 `utility meter` sensor (請看本說明下方附錄章節了解如何增設 utility meter).  
 UI 第二行請輸入本期電費計算周期的第一天的日期 (格式為 YYYY/MM/DD).  
   
-之後即可使用 `sensor.<您在設定 UI 第一行輸入的傳感器名稱>.power_cost` 顯示本期電費統計, 
-並可使用 `sensor.<您在設定 UI 第一行輸入的傳感器名稱>.kwh_cost` 給 HA 內建的能源面板作為獨立電費單價來源作為個迴路 (設備) 單獨計算電費使用 (請看本說明下方附錄章節).  
-(例如您 UI 第一行輸入 "sensor.AA", 完成後可使用 "sensor.AA.power_cost" 與 "sensor.AA.kwh_cost")  
+之後即可使用 `sensor.sensor_<您在設定 UI 第一行輸入的傳感器名稱>_power_cost` 顯示本期電費統計, 
+並可使用 `sensor.sensor_<您在設定 UI 第一行輸入的傳感器名稱>_kwh_cost` 給 HA 內建的能源面板作為獨立電費單價來源作為個迴路 (設備) 單獨計算電費使用 (請看本說明下方附錄章節).  
+(例如您 UI 第一行輸入 "sensor.AA", 完成後可使用 "sensor.sensor_AA_power_cost" 與 "sensor.sensor_AA_kwh_cost")  
   
   
 ## 2) Manual Install - 手動安裝 (推薦使用第 1 章節的 HACS 安裝日後更新方便很多)  
@@ -49,10 +49,11 @@ UI 第二行請輸入本期電費計算周期的第一天的日期 (格式為 YY
 UI 第一行請輸入要引用為電費計算的 "即時 kWh" 的 `utility meter` sensor (請看本說明下方附錄章節了解如何增設 utility meter).  
 UI 第二行請輸入本期電費計算周期的第一天的日期 (格式為 YYYY/MM/DD).  
   
-之後即可使用 `sensor.<您在設定 UI 第一行輸入的傳感器名稱>.power_cost` 顯示本期電費統計, 
-並可使用 `sensor.<您在設定 UI 第一行輸入的傳感器名稱>.kwh_cost` 給 HA 內建的能源面板作為獨立電費單價來源作為個迴路 (設備) 單獨計算電費使用 (請看本說明下方附錄章節).  
-(例如您 UI 第一行輸入 "sensor.AA", 完成後可使用 "sensor.AA.power_cost" 與 "sensor.AA.kwh_cost")  
-  
+之後即可使用 `sensor.sensor_<您在設定 UI 第一行輸入的傳感器名稱>_power_cost` 顯示本期電費統計, 
+並可使用 `sensor.sensor_<您在設定 UI 第一行輸入的傳感器名稱>_kwh_cost` 給 HA 內建的能源面板作為獨立電費單價來源作為個迴路 (設備) 單獨計算電費使用 (請看本說明下方附錄章節).  
+(例如您 UI 第一行輸入 "sensor.AA", 完成後可使用 "sensor.sensor_AA_power_cost" 與 "sensor.sensor_AA_kwh_cost")  
+   
+
   
 ## Appendix I (附錄 I): 如何新增即時 kWh 的 `utility meter` sensor 作為能源計算引用?
 請在 `configuration.yaml` 內加入總用電 `utility meter`, 程式碼如下:  
