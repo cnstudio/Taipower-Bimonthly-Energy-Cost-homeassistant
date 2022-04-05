@@ -3,8 +3,8 @@
 # Taipower-Bimonthly-Energy-Cost-homeassistant
 Calculate Taipower (Taiwan Power Company) bi-monthly bill amount from kWh sensor on Home Assistant.  
 在 Home Assistant (HA) 內以 kWh sensor (千瓦⋅時 電度 傳感器) 計算每期 (雙月) 電費帳單金額.  
-請注意 **`目前只支援 "非時間電價-非營業用的表燈用電" 計費`** 模式.  
-** 可支援多次設定, 增加多個台電電表來源分別計算 **  
+請注意 ** `目前只支援 "非時間電價-非營業用的表燈用電" 計費` ** 模式.  
+** `可支援多次設定, 增加多個台電電表來源分別計算` **  
   
   
 ## 1) Install by HACS - 使用 HACS 安裝  
