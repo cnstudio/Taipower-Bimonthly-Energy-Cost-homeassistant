@@ -7,9 +7,9 @@ Calculate Taipower (Taiwan Power Company) bi-monthly bill amount from kWh sensor
 ** 可支援多次設定, 增加多個台電電表來源分別計算 **  
   
   
-## 1) Install by HACS - 使用 HACS 安裝 (尚未申請, 目前請使用第 2 章節的手動安裝)  
+## 1) Install by HACS - 使用 HACS 安裝  
   
-###### 1.1) 推薦使用 HACS 安裝 (將在近日申請, 目前 HACS 內應該搜索不到):
+###### 1.1) 推薦使用 HACS 安裝:
 請在 HACS 的 `Integrations` 內搜索 `Taipower bimonthly cost` 並安裝後,  
 依照 UI 提示安裝即可:  
   
