@@ -7,6 +7,7 @@ from homeassistant import config_entries, core, exceptions
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import callback
 from homeassistant.helpers import config_validation as cv
+from homeassistant.helpers import selector
 
 from .const import (
     CONFIG_FLOW_VERSION,
@@ -26,11 +27,6 @@ async def validate_input(hass: core.HomeAssistant, data):
     states_source = hass.states.get(data[CONF_BIMONTHLY_ENERGY])
     if states_source is None:
         raise EntityNotExist
-    try:
-        start_date = datetime.strptime(data[CONF_METER_START_DAY], '%Y/%m/%d')
-        cv.date(start_date)
-    except ValueError:
-        raise ValueError from ValueError
     return True
 
 
@@ -75,11 +71,15 @@ class TaiPowerCostFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
         data_schema = vol.Schema(
             {
-                vol.Required(CONF_BIMONTHLY_ENERGY): cv.string,
+                vol.Required(CONF_BIMONTHLY_ENERGY): selector.selector(
+                    {"entity": {"domain": "sensor"}},
+                ),
                 # pylint: disable=unnecessary-lambda
                 vol.Required(
                     CONF_METER_START_DAY,
-                    default=lambda: datetime.now().strftime("%Y/%m/%d")): cv.string,
+                    default=lambda: datetime.now().strftime("%Y/%m/%d")): selector.selector(
+                        {"date": {}},
+                    )
             }
         )
 
@@ -124,12 +124,16 @@ class TaiPowerCostOptionsFlow(config_entries.OptionsFlow):
                     CONF_BIMONTHLY_ENERGY,
                     default=_get_config_value(
                         self.config_entry, CONF_BIMONTHLY_ENERGY, "")
-                ): cv.string,
+                ): selector.selector(
+                    {"entity": {"domain": "sensor"}},
+                ),
                 vol.Required(
                     CONF_METER_START_DAY,
                     default=_get_config_value(
                         self.config_entry, CONF_METER_START_DAY, 0)
-                ): cv.string,
+                ): selector.selector(
+                        {"date": {}},
+                    )
             }
         )
 
