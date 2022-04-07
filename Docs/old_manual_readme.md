@@ -131,6 +131,9 @@ sensor:
     entity_id: counter.energy_reset_days
     above: 59 #配合台電電費60天週期
   action:
+  - service: notify.notify
+    data:
+      message: 本期台電電費結算, 共使用 {{ states('sensor.bimonthly_energy') }} 度電, 電費 {{ states('sensor.power_cost') }} 元.
   - service: utility_meter.calibrate
     data:
       value: '0.000'
