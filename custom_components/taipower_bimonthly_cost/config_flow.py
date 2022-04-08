@@ -128,12 +128,7 @@ class TaiPowerCostOptionsFlow(config_entries.OptionsFlow):
                     {"entity": {"domain": "sensor"}},
                 ),
                 vol.Required(
-                    CONF_METER_START_DAY,
-                    default=_get_config_value(
-                        self.config_entry, CONF_METER_START_DAY, 0)
-                ): selector.selector(
-                        {"date": {}},
-                    )
+                    CONF_METER_START_DAY): selector.selector({"date": {}}),
             }
         )
 

@@ -139,7 +139,7 @@ class EnergyCostSensor(KwhCostSensor):
     def __init__(self, hass, entry_data, description):
         super().__init__(hass, entry_data, description)
         self._reset_day = datetime.strptime(
-            entry_data[CONF_METER_START_DAY], "%Y/%m/%d")
+            entry_data[CONF_METER_START_DAY], "%Y-%m-%d")
 
     async def reset_utility_meter(self, sensor):
         """Send a command."""
