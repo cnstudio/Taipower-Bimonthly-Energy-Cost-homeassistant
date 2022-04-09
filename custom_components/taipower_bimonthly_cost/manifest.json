@@ -9,5 +9,5 @@
   "config_flow": true,
   "iot_class": "cloud_polling",
   "quality_scale": "gold",
-  "version": "0.51.1"
+  "version": "0.51.2"
 }
