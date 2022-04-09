@@ -138,8 +138,7 @@ class EnergyCostSensor(KwhCostSensor):
     """Implementation of a energy cost sensor."""
     def __init__(self, hass, entry_data, description):
         super().__init__(hass, entry_data, description)
-        self._reset_day = datetime.strptime(
-            entry_data[CONF_METER_START_DAY], "%Y-%m-%d")
+        self._reset_day = entry_data[CONF_METER_START_DAY]
 
     async def reset_utility_meter(self, sensor):
         """Send a command."""
@@ -221,3 +220,11 @@ class EnergyCostSensor(KwhCostSensor):
             ATTR_START_DAY: self._reset_day,
             ATTR_USED_DAYS: (now - self._reset_day).days % 60,
         }
+
+    async def async_added_to_hass(self):
+        """ added to hass """
+        # convert to datetime format
+        try:
+            self._reset_day = datetime.strptime(self._reset_day, "%Y-%m-%d")
+        except Exception:
+            self._reset_day = datetime.strptime(self._reset_day, "%Y/%m/%d")
