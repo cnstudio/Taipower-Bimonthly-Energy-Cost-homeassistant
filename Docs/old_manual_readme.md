@@ -1,5 +1,3 @@
-[![](https://img.shields.io/github/v/release/cnstudio/Taipower-Bimonthly-Energy-Cost-homeassistant.svg?style=flat-square)](https://github.com/cnstudio/Taipower-Bimonthly-Energy-Cost-homeassistant/releases/latest) [![](https://img.shields.io/badge/HACS-Custom-orange.svg?style=flat-square)](https://github.com/custom-components/hacs)
-
 # Taipower-Bimonthly-Energy-Cost-homeassistant
 Calculate Taipower (Taiwan Power Company) bi-monthly bill amount from kWh sensor on Home Assistant.  
 在 Home Assistant (HA) 內以 kWh sensor (千瓦⋅時 電度 傳感器) 計算每期 (雙月) 電費帳單金額.  
