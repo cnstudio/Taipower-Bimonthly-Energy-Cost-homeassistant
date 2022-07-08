@@ -97,7 +97,7 @@ class KwhCostSensor(CostSensor):
         elif 1400.0 <= kwh < 2000.0:
             kwh_cost = 5.66
         elif kwh >= 2000.0:
-            kwh_cost = 6.41
+            kwh_cost = 6.99
         self._kwh_cost = kwh_cost
 
     def non_time_not_summer(self, kwh):
@@ -114,7 +114,7 @@ class KwhCostSensor(CostSensor):
         elif 1400.0 <= kwh < 2000.0:
             kwh_cost = 4.6
         elif kwh >= 2000.0:
-            kwh_cost = 5.03
+            kwh_cost = 5.48
         self._kwh_cost = kwh_cost
 
     @property
