@@ -48,7 +48,7 @@ sensor:
             {% elif states("sensor.bimonthly_energy") | float >= 1400  and states("sensor.bimonthly_energy") | float < 2000 %}
               {{5.66}}
             {% elif states("sensor.bimonthly_energy") | float >= 2000 %}
-              {{6.41}}
+              {{6.99}}
             {% endif %}
           {% else %}
             {% if states("sensor.bimonthly_energy") | float < 240 %}
@@ -62,7 +62,7 @@ sensor:
             {% elif states("sensor.bimonthly_energy") | float >= 1400  and states("sensor.bimonthly_energy") | float < 2000 %}
               {{4.6}}
             {% elif states("sensor.bimonthly_energy") | float >= 2000 %}
-              {{5.03}}
+              {{5.48}}
             {% endif %}
           {% endif %}
         friendly_name: "目前電度單價"
