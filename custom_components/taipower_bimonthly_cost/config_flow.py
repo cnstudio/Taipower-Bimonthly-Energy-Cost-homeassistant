@@ -1,6 +1,6 @@
 """Config flow for TaiPower Energy Cost integration."""
 import logging
-from datetime import  datetime
+from datetime import datetime
 import voluptuous as vol
 
 from homeassistant import config_entries, core, exceptions
