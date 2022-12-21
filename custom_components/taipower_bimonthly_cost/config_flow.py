@@ -77,7 +77,7 @@ class TaiPowerCostFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 # pylint: disable=unnecessary-lambda
                 vol.Required(
                     CONF_METER_START_DAY,
-                    default=lambda: datetime.now().strftime("%Y/%m/%d")): selector.selector(
+                    default=lambda: datetime.now().strftime("%Y-%m-%d")): selector.selector(
                         {"date": {}},
                     )
             }
