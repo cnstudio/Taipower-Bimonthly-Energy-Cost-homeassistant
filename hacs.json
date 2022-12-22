@@ -1,6 +1,6 @@
 {
     "name": "Taipower Bimonthly Energy Cost",
     "render_readme": true,
-    "homeassistant": "2022.4.1",
+    "homeassistant": "2022.12.0",
     "country": ["TW"]
 }
