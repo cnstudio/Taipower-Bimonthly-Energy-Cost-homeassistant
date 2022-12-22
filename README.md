@@ -14,7 +14,7 @@ Calculate Taipower (Taiwan Power Company) bi-monthly (60 days) bill amount from 
 依照 UI 提示安裝即可:  
   
 UI 第一行請輸入要引用為電費計算的 "即時 kWh" 的 `utility meter` sensor (請看本說明下方附錄章節了解如何增設 utility meter).  
-UI 第二行請輸入本期電費計算周期的第一天的日期 (格式為 YYYY/MM/DD).  
+UI 第二行請輸入本期電費計算周期的第一天的日期 (格式為 YYYY-MM-DD).  
   
 之後即可使用 `sensor.<您在設定 UI 第一行輸入的傳感器名稱>_power_cost` 顯示本期電費統計, 
 並可使用 `sensor.<您在設定 UI 第一行輸入的傳感器名稱>_kwh_cost` 給 HA 內建的能源面板作為獨立電費單價來源作為個迴路 (設備) 單獨計算電費使用 (請看本說明下方附錄章節).  
@@ -47,7 +47,7 @@ UI 第二行請輸入本期電費計算周期的第一天的日期 (格式為 YY
 之後依照 UI 提示進行即可:  
   
 UI 第一行請輸入要引用為電費計算的 "即時 kWh" 的 `utility meter` sensor (請看本說明下方附錄章節了解如何增設 utility meter).  
-UI 第二行請輸入本期電費計算周期的第一天的日期 (格式為 YYYY/MM/DD).  
+UI 第二行請輸入本期電費計算周期的第一天的日期 (格式為 YYYY-MM-DD).  
   
 之後即可使用 `sensor.sensor_<您在設定 UI 第一行輸入的傳感器名稱>_power_cost` 顯示本期電費統計, 
 並可使用 `sensor.sensor_<您在設定 UI 第一行輸入的傳感器名稱>_kwh_cost` 給 HA 內建的能源面板作為獨立電費單價來源作為個迴路 (設備) 單獨計算電費使用 (請看本說明下方附錄章節).  
