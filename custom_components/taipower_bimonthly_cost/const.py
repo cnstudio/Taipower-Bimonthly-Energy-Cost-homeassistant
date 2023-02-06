@@ -35,13 +35,15 @@ COST_SENSORS: tuple[TaiPowerCostSensorDescription, ...] = (
         name="Price Per kWh",
         native_unit_of_measurement=UNIT_KWH_COST,
         device_class=SensorDeviceClass.MONETARY,
-        state_class=SensorStateClass.MEASUREMENT,
+        #state_class=SensorStateClass.MEASUREMENT,
+        #Try to workaround HA 2023.2.1 sensor class warning issue
     ),
     TaiPowerCostSensorDescription(
         key="power_cost",
         name="Power Cost",
         native_unit_of_measurement=UNIT_TWD,
         device_class=SensorDeviceClass.MONETARY,
-        state_class=SensorStateClass.MEASUREMENT,
+        #state_class=SensorStateClass.MEASUREMENT,
+        #Try to workaround HA 2023.2.1 sensor class warning issue
     )
 )
