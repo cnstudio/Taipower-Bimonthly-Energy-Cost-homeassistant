@@ -86,3 +86,9 @@ utility_meter:
 只要於 HA 內的 設定 -> 能源 -> Grid consumption -> 耗電量 新增項目內選擇 "total_power",  
 並選擇 獨立價格實體 後於下拉選單內選擇 sensor.kwh_cost 後按下 儲存即可.  
 (注意: 能源面板需要 1~2 個小時後才會開始顯現數值, 給 HA 一點計算時間的耐心)  
+
+## Appendix IV (附錄 IV): Use old fully manual setup method, but it WITH auto notify function!
+如果您對 Home Assistant 裡面的各種手動設定熟悉, 可以使用舊的全手動設定, 好處是您可以獲得在每期電費結算時會自動推播本期電費  
+費用與用電度數的訊息功能!  
+設定方法請參考以下連結內的舊版使用說明:  
+https://github.com/cnstudio/Taipower-Bimonthly-Energy-Cost-homeassistant/blob/main/Docs/old_manual_readme.md  
