@@ -86,36 +86,37 @@ class KwhCostSensor(CostSensor):
     def non_time_summer(self, kwh):
         """ return twd/kwh for non time and in summer """
         kwh_cost = None
-        if kwh < 240.0:
-            kwh_cost = 1.63
-        elif 240.0 <= kwh <= 660.0:
-            kwh_cost = 2.38
-        elif 660.0 <= kwh < 1000.0:
-            kwh_cost = 3.52
-        elif 1000.0 <= kwh < 1400.0:
-            kwh_cost = 4.8
-        elif 1400.0 <= kwh < 2000.0:
-            kwh_cost = 5.83
-        elif kwh >= 2000.0:
-            kwh_cost = 7.69
+        if kwh <= 120.0:
+            kwh_cost = 1.68
+        elif 121.0 <= kwh <= 330.0:
+            kwh_cost = 2.45
+        elif 331.0 <= kwh <= 500.0:
+            kwh_cost = 3.70
+        elif 501.0 <= kwh <= 700.0:
+            kwh_cost = 5.04
+        elif 701.0 <= kwh <= 1000.0:
+            kwh_cost = 6.24
+        elif kwh > 1000.0:
+            kwh_cost = 8.46
         self._kwh_cost = kwh_cost
-
+    
     def non_time_not_summer(self, kwh):
         """ return twd/kwh for non time and not in summer """
         kwh_cost = None
-        if kwh < 240.0:
-            kwh_cost = 1.63
-        elif 240.0 <= kwh <= 660.0:
-            kwh_cost = 2.1
-        elif 660.0 <= kwh < 1000.0:
-            kwh_cost = 2.89
-        elif 1000.0 <= kwh < 1400.0:
-            kwh_cost = 3.94
-        elif 1400.0 <= kwh < 2000.0:
-            kwh_cost = 4.74
-        elif kwh >= 2000.0:
-            kwh_cost = 6.03
+        if kwh <= 120.0:
+            kwh_cost = 1.68
+        elif 121.0 <= kwh <= 330.0:
+            kwh_cost = 2.16
+        elif 331.0 <= kwh <= 500.0:
+            kwh_cost = 3.03
+        elif 501.0 <= kwh <= 700.0:
+            kwh_cost = 4.14
+        elif 701.0 <= kwh <= 1000.0:
+            kwh_cost = 5.07
+        elif kwh > 1000.0:
+            kwh_cost = 6.63
         self._kwh_cost = kwh_cost
+
 
     @property
     def native_value(self):
@@ -152,37 +153,38 @@ class EnergyCostSensor(KwhCostSensor):
 
     def non_time_summer_cost(self, kwh):
         """ return cost for non time and in summer """
-        value = None
-        if kwh < 240.0:
-            value = kwh * self._kwh_cost
-        elif 240.0 <= kwh <= 660.0:
-            value = ((kwh - 240.0) * self._kwh_cost) + 391.2
-        elif 660.0 <= kwh < 1000.0:
-            value = ((kwh - 660.0) * self._kwh_cost) + 1390.8
-        elif 1000.0 <= kwh < 1400.0:
-            value = ((kwh - 1000.0) * self._kwh_cost) + 2587.6
-        elif 1400.0 <= kwh < 2000.0:
-            value = ((kwh - 1400.0) * self._kwh_cost) + 4507.6
-        elif kwh >= 2000.0:
-            value = ((kwh - 2000.0) * self._kwh_cost) + 8005.6
+        value = 0.0
+        if kwh <= 120.0:
+            value = kwh * 1.68
+        elif 121.0 <= kwh <= 330.0:
+            value = (120.0 * 1.68) + ((kwh - 120.0) * 2.45)
+        elif 331.0 <= kwh <= 500.0:
+            value = (120.0 * 1.68) + (210.0 * 2.45) + ((kwh - 330.0) * 3.70)
+        elif 501.0 <= kwh <= 700.0:
+            value = (120.0 * 1.68) + (210.0 * 2.45) + (170.0 * 3.70) + ((kwh - 500.0) * 5.04)
+        elif 701.0 <= kwh <= 1000.0:
+            value = (120.0 * 1.68) + (210.0 * 2.45) + (170.0 * 3.70) + (200.0 * 5.04) + ((kwh - 700.0) * 6.24)
+        elif kwh > 1000.0:
+            value = (120.0 * 1.68) + (210.0 * 2.45) + (170.0 * 3.70) + (200.0 * 5.04) + (300.0 * 6.24) + ((kwh - 1000.0) * 8.46)
+        return value
+    
+    def non_time_not_summer_cost(self, kwh):
+        """ return cost for non time and not in summer """
+        value = 0.0
+        if kwh <= 120.0:
+            value = kwh * 1.68
+        elif 121.0 <= kwh <= 330.0:
+            value = (120.0 * 1.68) + ((kwh - 120.0) * 2.16)
+        elif 331.0 <= kwh <= 500.0:
+            value = (120.0 * 1.68) + (210.0 * 2.16) + ((kwh - 330.0) * 3.03)
+        elif 501.0 <= kwh <= 700.0:
+            value = (120.0 * 1.68) + (210.0 * 2.16) + (170.0 * 3.03) + ((kwh - 500.0) * 4.14)
+        elif 701.0 <= kwh <= 1000.0:
+            value = (120.0 * 1.68) + (210.0 * 2.16) + (170.0 * 3.03) + (200.0 * 4.14) + ((kwh - 700.0) * 5.07)
+        elif kwh > 1000.0:
+            value = (120.0 * 1.68) + (210.0 * 2.16) + (170.0 * 3.03) + (200.0 * 4.14) + (300.0 * 5.07) + ((kwh - 1000.0) * 6.63)
         return value
 
-    def non_time_not_summer_cost(self, kwh):
-        """ return cost for non time and notin summer """
-        value = None
-        if kwh < 240.0:
-            value = kwh * self._kwh_cost
-        elif 240.0 <= kwh <= 660.0:
-            value = ((kwh - 240.0) * self._kwh_cost) + 391.2
-        elif 660.0 <= kwh < 1000.0:
-            value = ((kwh - 660.0) * self._kwh_cost) + 1273.2
-        elif 1000.0 <= kwh < 1400.0:
-            value = ((kwh - 1000.0) * self._kwh_cost) + 2255.8
-        elif 1400.0 <= kwh < 2000.0:
-            value = ((kwh - 1400.0) * self._kwh_cost) + 3831.8
-        elif kwh >= 2000.0:
-            value = ((kwh - 2000.0) * self._kwh_cost) + 6675.8
-        return value
 
     @property
     def native_value(self):
