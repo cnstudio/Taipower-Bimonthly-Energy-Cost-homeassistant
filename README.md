@@ -83,9 +83,8 @@ utility_meter:
   
 ## Appendix III (附錄 III): How to work with new Home Assistant (After 2021.8.0) build-in Energy function?  
 從 Home Assistant 2021.8.0 版以後新增了內建的 "能源" 面板功能, 可以分別計算每日用電與每日電費, 配合新增上述 1.2 項次的程式後,  
-只要於 HA 內的 設定 -> 能源 -> Grid consumption -> 耗電量 新增項目內選擇 "total_power",  
-並選擇 獨立價格實體 後於下拉選單內選擇 sensor.kwh_cost 後按下 儲存即可.  
-(注意: 能源面板需要 1~2 個小時後才會開始顯現數值, 給 HA 一點計算時間的耐心)  
+只要於 HA 主頁左側能源面板 -> 能源面板內右上角三個小點 (設定) -> 能源設定 -> 電網耗能 -> 編輯耗能 (鉛筆圖示) -> 新增項目內選擇 獨立價格實體 -> 於下拉選單內選擇 sensor.kwh_cost (目前電度單價) 後按下 儲存即可.  
+(注意: 能源面板最多需要 2 個小時後才會開始顯現數值, 給 HA 一點計算時間的耐心)  
 
 ## Appendix IV (附錄 IV): Use old fully manual setup method, but it WITH auto notify function!
 如果您對 Home Assistant 裡面的各種手動設定熟悉, 可以使用舊的全手動設定, 好處是您可以獲得在每期電費結算時會自動推播本期電費  
