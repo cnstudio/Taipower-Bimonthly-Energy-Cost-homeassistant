@@ -38,31 +38,31 @@ sensor:
         value_template: >
           {% if now().month in [6,7,8,9] %}
             {% if states("sensor.bimonthly_energy") | float < 240 %}
-              {{1.63}}
+              {{1.68}}
             {% elif states("sensor.bimonthly_energy") | float >= 240  and states("sensor.bimonthly_energy") | float < 660 %}
-              {{2.38}}
+              {{2.45}}
             {% elif states("sensor.bimonthly_energy") | float >= 660  and states("sensor.bimonthly_energy") | float < 1000 %}
-              {{3.52}}
+              {{3.7}}
             {% elif states("sensor.bimonthly_energy") | float >= 1000  and states("sensor.bimonthly_energy") | float < 1400 %}
-              {{4.8}}
+              {{5.04}}
             {% elif states("sensor.bimonthly_energy") | float >= 1400  and states("sensor.bimonthly_energy") | float < 2000 %}
-              {{5.83}}
+              {{6.24}}
             {% elif states("sensor.bimonthly_energy") | float >= 2000 %}
-              {{7.69}}
+              {{8.46}}
             {% endif %}
           {% else %}
             {% if states("sensor.bimonthly_energy") | float < 240 %}
-              {{1.63}}
+              {{1.68}}
             {% elif states("sensor.bimonthly_energy") | float >= 240  and states("sensor.bimonthly_energy") | float < 660 %}
-              {{2.1}}
+              {{2.16}}
             {% elif states("sensor.bimonthly_energy") | float >= 660  and states("sensor.bimonthly_energy") | float < 1000 %}
-              {{2.89}}
+              {{3.03}}
             {% elif states("sensor.bimonthly_energy") | float >= 1000  and states("sensor.bimonthly_energy") | float < 1400 %}
-              {{3.94}}
+              {{4.14}}
             {% elif states("sensor.bimonthly_energy") | float >= 1400  and states("sensor.bimonthly_energy") | float < 2000 %}
-              {{4.74}}
+              {{5.07}}
             {% elif states("sensor.bimonthly_energy") | float >= 2000 %}
-              {{6.03}}
+              {{6.63}}
             {% endif %}
           {% endif %}
         friendly_name: "目前電度單價"
@@ -77,29 +77,29 @@ sensor:
             {% if states("sensor.bimonthly_energy") | float < 240 %}
               {{(states("sensor.bimonthly_energy") | float * states("sensor.kwh_cost") | float) | round(0)}}
             {% elif states("sensor.bimonthly_energy") | float >= 240  and states("sensor.bimonthly_energy") | float < 660 %}
-              {{(((states("sensor.bimonthly_energy") | float - 240) * states("sensor.kwh_cost") | float) + 391.2) | round(0)}}
+              {{(((states("sensor.bimonthly_energy") | float - 240) * states("sensor.kwh_cost") | float) + 403.2) | round(0)}}
             {% elif states("sensor.bimonthly_energy") | float >= 660  and states("sensor.bimonthly_energy") | float < 1000 %}
-              {{(((states("sensor.bimonthly_energy") | float - 660) * states("sensor.kwh_cost") | float) + 1390.8) | round(0)}}
+              {{(((states("sensor.bimonthly_energy") | float - 660) * states("sensor.kwh_cost") | float) + 1432.2) | round(0)}}
             {% elif states("sensor.bimonthly_energy") | float >= 1000  and states("sensor.bimonthly_energy") | float < 1400 %}
-              {{(((states("sensor.bimonthly_energy") | float - 1000) * states("sensor.kwh_cost") | float) + 2587.6) | round(0)}}
+              {{(((states("sensor.bimonthly_energy") | float - 1000) * states("sensor.kwh_cost") | float) + 2690.2) | round(0)}}
             {% elif states("sensor.bimonthly_energy") | float >= 1400  and states("sensor.bimonthly_energy") | float < 2000 %}
-              {{(((states("sensor.bimonthly_energy") | float - 1400) * states("sensor.kwh_cost") | float) + 4507.6) | round(0)}}
+              {{(((states("sensor.bimonthly_energy") | float - 1400) * states("sensor.kwh_cost") | float) + 4706.2) | round(0)}}
             {% elif states("sensor.bimonthly_energy") | float >= 2000 %}
-              {{(((states("sensor.bimonthly_energy") | float - 2000) * states("sensor.kwh_cost") | float) + 8005.6) | round(0)}}
+              {{(((states("sensor.bimonthly_energy") | float - 2000) * states("sensor.kwh_cost") | float) + 8450.2) | round(0)}}
             {% endif %}
           {% else %}
             {% if states("sensor.bimonthly_energy") | float < 240 %}
               {{(states("sensor.bimonthly_energy") | float * states("sensor.kwh_cost") | float) | round(0)}}
             {% elif states("sensor.bimonthly_energy") | float >= 240  and states("sensor.bimonthly_energy") | float < 660 %}
-              {{(((states("sensor.bimonthly_energy") | float - 240) * states("sensor.kwh_cost") | float) + 391.2) | round(0)}}
+              {{(((states("sensor.bimonthly_energy") | float - 240) * states("sensor.kwh_cost") | float) + 403.2) | round(0)}}
             {% elif states("sensor.bimonthly_energy") | float >= 660  and states("sensor.bimonthly_energy") | float < 1000 %}
-              {{(((states("sensor.bimonthly_energy") | float - 660) * states("sensor.kwh_cost") | float) + 1273.2) | round(0)}}
+              {{(((states("sensor.bimonthly_energy") | float - 660) * states("sensor.kwh_cost") | float) + 1310.4) | round(0)}}
             {% elif states("sensor.bimonthly_energy") | float >= 1000  and states("sensor.bimonthly_energy") | float < 1400 %}
-              {{(((states("sensor.bimonthly_energy") | float - 1000) * states("sensor.kwh_cost") | float) + 2255.8) | round(0)}}
+              {{(((states("sensor.bimonthly_energy") | float - 1000) * states("sensor.kwh_cost") | float) + 2340.6) | round(0)}}
             {% elif states("sensor.bimonthly_energy") | float >= 1400  and states("sensor.bimonthly_energy") | float < 2000 %}
-              {{(((states("sensor.bimonthly_energy") | float - 1400) * states("sensor.kwh_cost") | float) + 3831.8) | round(0)}}
+              {{(((states("sensor.bimonthly_energy") | float - 1400) * states("sensor.kwh_cost") | float) + 3996.6) | round(0)}}
             {% elif states("sensor.bimonthly_energy") | float >= 2000 %}
-              {{(((states("sensor.bimonthly_energy") | float - 2000) * states("sensor.kwh_cost") | float) + 6675.8) | round(0)}}
+              {{(((states("sensor.bimonthly_energy") | float - 2000) * states("sensor.kwh_cost") | float) + 7038.6) | round(0)}}
             {% endif %}
           {% endif %}
         friendly_name: "目前總電費"
