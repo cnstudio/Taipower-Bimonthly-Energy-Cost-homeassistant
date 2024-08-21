@@ -8,5 +8,5 @@
   "iot_class": "local_polling",
   "issue_tracker": "https://github.com/cnstudio/Taipower-Bimonthly-Energy-Cost-homeassistant/issues",
   "requirements": [],
-  "version": "0.53.0"
+  "version": "0.53.1"
 }
