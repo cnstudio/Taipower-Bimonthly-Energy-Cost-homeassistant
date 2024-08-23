@@ -13,8 +13,8 @@ Calculate Taipower (Taiwan Power Company) bi-monthly (60 days) bill amount from 
 請在 HACS 的 `Integrations` 內搜索 `Taipower bimonthly cost` 並安裝後,  
 依照 UI 提示安裝即可:  
   
-UI 第一行請輸入要引用為電費計算的 "即時 kWh" 的 `utility meter` sensor (請看本說明下方附錄章節了解如何增設 utility meter).  
-UI 第二行請輸入本期電費計算周期的第一天的日期 (格式為 YYYY-MM-DD).  
+UI 第一行請輸入要引用為電費計算的 "即時 kWh" 的 `utility meter` sensor (請看本說明下方附錄章節了解如何增設 utility meter, 注意是要 "即時 kWh", 非一般的 "累計 kWh").  
+UI 第二行請輸入本期電費計算周期的第一天的日期 (格式為 YYYY-MM-DD, 此為過去的日期, 俗稱的上次抄表日期, 而非未來的下次抄表日期).  
   
 之後即可使用 `sensor.<您在設定 UI 第一行輸入的傳感器名稱>_power_cost` 顯示本期電費統計, 
 並可使用 `sensor.<您在設定 UI 第一行輸入的傳感器名稱>_kwh_cost` 給 HA 內建的能源面板作為獨立電費單價來源作為個迴路 (設備) 單獨計算電費使用 (請看本說明下方附錄章節).  
@@ -46,8 +46,8 @@ UI 第二行請輸入本期電費計算周期的第一天的日期 (格式為 YY
 請至 HA 內的 設定 -> 裝置與服務 -> 整合 -> 新增整合(位於右下角的按鈕) -> 於跳出的 設定整合 選單內搜索 `Taipower bimonthly cost` 並安裝.
 之後依照 UI 提示進行即可:  
   
-UI 第一行請輸入要引用為電費計算的 "即時 kWh" 的 `utility meter` sensor (請看本說明下方附錄章節了解如何增設 utility meter).  
-UI 第二行請輸入本期電費計算周期的第一天的日期 (格式為 YYYY-MM-DD).  
+UI 第一行請輸入要引用為電費計算的 "即時 kWh" 的 `utility meter` sensor (請看本說明下方附錄章節了解如何增設 utility meter, 注意是要 "即時 kWh", 非一般的 "累計 kWh").  
+UI 第二行請輸入本期電費計算周期的第一天的日期 (格式為 YYYY-MM-DD, 此為過去的日期, 俗稱的上次抄表日期, 而非未來的下次抄表日期).  
   
 之後即可使用 `sensor.sensor_<您在設定 UI 第一行輸入的傳感器名稱>_power_cost` 顯示本期電費統計, 
 並可使用 `sensor.sensor_<您在設定 UI 第一行輸入的傳感器名稱>_kwh_cost` 給 HA 內建的能源面板作為獨立電費單價來源作為個迴路 (設備) 單獨計算電費使用 (請看本說明下方附錄章節).  
@@ -83,7 +83,7 @@ utility_meter:
   
 ## Appendix III (附錄 III): How to work with new Home Assistant (After 2021.8.0) build-in Energy function?  
 從 Home Assistant 2021.8.0 版以後新增了內建的 "能源" 面板功能, 可以分別計算每日用電與每日電費, 配合新增上述 1.2 項次的程式後,  
-只要於 HA 主頁左側能源面板 -> 能源面板內右上角三個小點 (設定) -> 能源設定 -> 電網耗能 -> 編輯耗能 (鉛筆圖示) -> 新增項目內選擇 獨立價格實體 -> 於下拉選單內選擇 sensor.kwh_cost (目前電度單價) 後按下 儲存即可.  
+只要於 HA 主頁左側能源面板 -> 能源面板內右上角三個小點 (設定) -> 能源設定 -> 電網耗能 -> 編輯耗能 (鉛筆圖示) -> 新增項目內選擇 獨立價格實體 -> 於下拉選單內選擇 sensor.(初始設定輸入sensor名稱)_kwh_cost (目前電度單價) 後按下 儲存即可.  
 (注意: 能源面板最多需要 2 個小時後才會開始顯現數值, 給 HA 一點計算時間的耐心)  
 
 ## Appendix IV (附錄 IV): Use old fully manual setup method, but it WITH auto notify function!
