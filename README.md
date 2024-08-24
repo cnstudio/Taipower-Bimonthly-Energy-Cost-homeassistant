@@ -13,7 +13,7 @@ Calculate Taipower (Taiwan Power Company) bi-monthly (60 days) bill amount from 
 請在 HACS 的 `Integrations` 內搜索 `Taipower bimonthly cost` 並安裝後,  
 依照 UI 提示安裝即可:  
   
-UI 第一行請輸入要引用為電費計算的 "即時 kWh" 的 `utility meter` sensor (請看本說明下方附錄章節了解如何增設 utility meter, 注意是要 "即時 kWh", 非一般的 "累計 kWh").  
+UI 第一行請輸入要引用為電費計算的 "即時 kWh" 的 `utility meter` sensor (請看本說明下方 附錄 I 章節了解如何增設 utility meter).  
 UI 第二行請輸入本期電費計算周期的第一天的日期 (格式為 YYYY-MM-DD, 此為過去的日期, 俗稱的上次抄表日期, 而非未來的下次抄表日期).  
   
 之後即可使用 `sensor.<您在設定 UI 第一行輸入的傳感器名稱>_power_cost` 顯示本期電費統計, 
@@ -46,7 +46,7 @@ UI 第二行請輸入本期電費計算周期的第一天的日期 (格式為 YY
 請至 HA 內的 設定 -> 裝置與服務 -> 整合 -> 新增整合(位於右下角的按鈕) -> 於跳出的 設定整合 選單內搜索 `Taipower bimonthly cost` 並安裝.
 之後依照 UI 提示進行即可:  
   
-UI 第一行請輸入要引用為電費計算的 "即時 kWh" 的 `utility meter` sensor (請看本說明下方附錄章節了解如何增設 utility meter, 注意是要 "即時 kWh", 非一般的 "累計 kWh").  
+UI 第一行請輸入要引用為電費計算的 "即時 kWh" 的 `utility meter` sensor (請看本說明下方 附錄 I 章節了解如何增設 utility meter).  
 UI 第二行請輸入本期電費計算周期的第一天的日期 (格式為 YYYY-MM-DD, 此為過去的日期, 俗稱的上次抄表日期, 而非未來的下次抄表日期).  
   
 之後即可使用 `sensor.sensor_<您在設定 UI 第一行輸入的傳感器名稱>_power_cost` 顯示本期電費統計, 
