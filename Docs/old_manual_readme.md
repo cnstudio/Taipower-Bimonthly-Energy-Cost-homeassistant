@@ -163,7 +163,7 @@ sensor:
     source: sensor.your_W_sensor # 這是您原始的用電 "W (瓦特)" 偵測器.
     name: total_power # 這是要交給 utility meter 的名稱.
     unit_prefix: k
-    method: right
+    method: trapezoidal
     round: 3
 ```
 
