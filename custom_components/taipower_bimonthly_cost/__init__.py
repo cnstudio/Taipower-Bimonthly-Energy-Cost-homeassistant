@@ -23,11 +23,13 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry):
     data[config_entry.entry_id] = {
         CONF_BIMONTHLY_ENERGY: _get_config_value(config_entry, CONF_BIMONTHLY_ENERGY, "")
     }
-    for platform in PLATFORMS:
-        hass.async_create_task(
-            await hass.config_entries.async_forward_entry_setups(config_entry, platform)
-        )
-
+    # Original setup command
+    # for platform in PLATFORMS:
+    #     hass.async_create_task(
+    #         hass.config_entries.async_forward_entry_setup(config_entry, platform)
+    #     )
+    # New setup command
+    await hass.config_entries.async_forward_entry_setups(config_entry, PLATFORMS)
     return True
 
 
