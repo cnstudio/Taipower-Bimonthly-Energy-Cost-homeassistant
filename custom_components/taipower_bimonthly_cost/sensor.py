@@ -1,4 +1,5 @@
 """Support for TaiPower Energy Cost service."""
+import asyncio
 import logging
 from datetime import datetime
 
@@ -207,7 +208,7 @@ class EnergyCostSensor(KwhCostSensor):
             if now.hour == 23 and now.minute == 59 and 0 < now.second <= 59:
                 if (self._hass.states.get(self._energy_entity) and
                         self._hass.states.get(self._energy_entity).state != "unknown"):
-                    self.reset_utility_meter(self._energy_entity)
+                    hass.async_create_task(self.reset_utility_meter(self._energy_entity))
         return value
 
     @property
