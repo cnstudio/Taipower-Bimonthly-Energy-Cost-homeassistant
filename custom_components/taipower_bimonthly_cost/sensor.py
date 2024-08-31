@@ -1,5 +1,4 @@
 """Support for TaiPower Energy Cost service."""
-import asyncio
 import logging
 from datetime import datetime
 
@@ -141,14 +140,14 @@ class EnergyCostSensor(KwhCostSensor):
         super().__init__(hass, entry_data, description)
         self._reset_day = entry_data[CONF_METER_START_DAY]
 
-    async def reset_utility_meter(self, sensor):
+    def reset_utility_meter(self, sensor):
         """Send a command."""
         service_data = {
             'value': '0.000',
             ATTR_ENTITY_ID: sensor
         }
 
-        await self._hass.services.async_call(
+        self._hass.services.async_call(
             'utility_meter', 'calibrate', service_data)
 
     def non_time_summer_cost(self, kwh):
@@ -208,7 +207,7 @@ class EnergyCostSensor(KwhCostSensor):
             if now.hour == 23 and now.minute == 59 and 0 < now.second <= 59:
                 if (self._hass.states.get(self._energy_entity) and
                         self._hass.states.get(self._energy_entity).state != "unknown"):
-                    hass.async_create_task(self.reset_utility_meter(self._energy_entity))
+                    self.reset_utility_meter(self._energy_entity)
         return value
 
     @property
