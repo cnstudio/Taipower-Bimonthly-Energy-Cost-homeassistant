@@ -140,14 +140,14 @@ class EnergyCostSensor(KwhCostSensor):
         super().__init__(hass, entry_data, description)
         self._reset_day = entry_data[CONF_METER_START_DAY]
 
-    def reset_utility_meter(self, sensor):
+    async def reset_utility_meter(self, sensor):
         """Send a command."""
         service_data = {
             'value': '0.000',
             ATTR_ENTITY_ID: sensor
         }
 
-        self._hass.services.async_call(
+        await self._hass.services.async_call(
             'utility_meter', 'calibrate', service_data)
 
     def non_time_summer_cost(self, kwh):
