@@ -87,34 +87,34 @@ class KwhCostSensor(CostSensor):
         """ return twd/kwh for non time and in summer """
         kwh_cost = None
         if kwh < 240.0:
-            kwh_cost = 1.68
+            kwh_cost = 1.78
         elif 240.0 <= kwh <= 660.0:
-            kwh_cost = 2.45
+            kwh_cost = 2.55
         elif 660.0 <= kwh < 1000.0:
-            kwh_cost = 3.7
+            kwh_cost = 3.8
         elif 1000.0 <= kwh < 1400.0:
-            kwh_cost = 5.04
+            kwh_cost = 5.14
         elif 1400.0 <= kwh < 2000.0:
-            kwh_cost = 6.24
+            kwh_cost = 6.44
         elif kwh >= 2000.0:
-            kwh_cost = 8.46
+            kwh_cost = 8.86
         self._kwh_cost = kwh_cost
 
     def non_time_not_summer(self, kwh):
         """ return twd/kwh for non time and not in summer """
         kwh_cost = None
         if kwh < 240.0:
-            kwh_cost = 1.68
+            kwh_cost = 1.78
         elif 240.0 <= kwh <= 660.0:
-            kwh_cost = 2.16
+            kwh_cost = 2.26
         elif 660.0 <= kwh < 1000.0:
-            kwh_cost = 3.03
+            kwh_cost = 3.13
         elif 1000.0 <= kwh < 1400.0:
-            kwh_cost = 4.14
+            kwh_cost = 4.24
         elif 1400.0 <= kwh < 2000.0:
-            kwh_cost = 5.07
+            kwh_cost = 5.27
         elif kwh >= 2000.0:
-            kwh_cost = 6.63
+            kwh_cost = 7.03
         self._kwh_cost = kwh_cost
 
     @property
@@ -156,15 +156,15 @@ class EnergyCostSensor(KwhCostSensor):
         if kwh < 240.0:
             value = kwh * self._kwh_cost
         elif 240.0 <= kwh <= 660.0:
-            value = ((kwh - 240.0) * self._kwh_cost) + 403.2
+            value = ((kwh - 240.0) * self._kwh_cost) + 427
         elif 660.0 <= kwh < 1000.0:
-            value = ((kwh - 660.0) * self._kwh_cost) + 1432.2
+            value = ((kwh - 660.0) * self._kwh_cost) + 1498
         elif 1000.0 <= kwh < 1400.0:
-            value = ((kwh - 1000.0) * self._kwh_cost) + 2690.2
+            value = ((kwh - 1000.0) * self._kwh_cost) + 2790
         elif 1400.0 <= kwh < 2000.0:
-            value = ((kwh - 1400.0) * self._kwh_cost) + 4706.2
+            value = ((kwh - 1400.0) * self._kwh_cost) + 4846
         elif kwh >= 2000.0:
-            value = ((kwh - 2000.0) * self._kwh_cost) + 8450.2
+            value = ((kwh - 2000.0) * self._kwh_cost) + 8710
         return value
 
     def non_time_not_summer_cost(self, kwh):
@@ -173,15 +173,15 @@ class EnergyCostSensor(KwhCostSensor):
         if kwh < 240.0:
             value = kwh * self._kwh_cost
         elif 240.0 <= kwh <= 660.0:
-            value = ((kwh - 240.0) * self._kwh_cost) + 403.2
+            value = ((kwh - 240.0) * self._kwh_cost) + 427
         elif 660.0 <= kwh < 1000.0:
-            value = ((kwh - 660.0) * self._kwh_cost) + 1310.4
+            value = ((kwh - 660.0) * self._kwh_cost) + 1376
         elif 1000.0 <= kwh < 1400.0:
-            value = ((kwh - 1000.0) * self._kwh_cost) + 2340.6
+            value = ((kwh - 1000.0) * self._kwh_cost) + 2441
         elif 1400.0 <= kwh < 2000.0:
-            value = ((kwh - 1400.0) * self._kwh_cost) + 3996.6
+            value = ((kwh - 1400.0) * self._kwh_cost) + 4137
         elif kwh >= 2000.0:
-            value = ((kwh - 2000.0) * self._kwh_cost) + 7038.6
+            value = ((kwh - 2000.0) * self._kwh_cost) + 7299
         return value
 
     @property
